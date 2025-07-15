@@ -3,6 +3,7 @@
     "prisma": "^6.9.0"
   },
   "dependencies": {
-    "dotenv": "^17.2.0"
+    "dotenv": "^17.2.0",
+    "react-router-dom": "^7.6.3"
   }
 }
