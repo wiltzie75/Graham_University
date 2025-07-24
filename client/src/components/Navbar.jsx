@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Link, Navigate, NavLink } from 'react-router-dom';
+import logoImage from '../assets/graham_university_logo.png';
 
 const Navbar = () => {
     const [departments, setDepartments] = useState([]);
     const [dropdown, setDropdown] = useState(false);
     const [faculty, setFaculty] = useState([]);
 
-    useEffect(() => {
-        fetch("http://localhost:3000/api/departments")
-        .then((response) => response.json())
-        .then((data) => {
-            setDepartments(data);
-        })
-        .catch((error) => {
-            console.error("Couldn't fetch departments", error);
-        });
-    }, []);
+    // useEffect(() => {
+    //     fetch("http://localhost:3000/api/departments")
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //         setDepartments(data);
+    //     })
+    //     .catch((error) => {
+    //         console.error("Couldn't fetch departments", error);
+    //     });
+    // }, []);
 
     function clickHandle() {
         localStorage.removeItem("token")
@@ -23,26 +24,26 @@ const Navbar = () => {
         window.location.reload()
     }
 
-    useEffect(() => {
-        if(localStorage.getItem("token")){console.log(true)}
-        if(!localStorage.getItem("token")){console.log(false)}
-    }, [localStorage.getItem("token")])
+    // useEffect(() => {
+    //     if(localStorage.getItem("token")){console.log(true)}
+    //     if(!localStorage.getItem("token")){console.log(false)}
+    // }, [localStorage.getItem("token")])
 
     return ( 
         <div className="navbar" role="banner">
             <NavLink to="/" className="logo">
-                <img></img>
+                <img src={logoImage} className="logo" alt="GU Logo"></img>
             </NavLink>
     
-            <div className="navbar-title">
-                <hi>Graham University</hi>
-            </div>
+            {/* <div className="navbar-title">
+                <h1>Graham University</h1>
+            </div> */}
 
             <ul>
                 <li style={{ margin: '0 10px' }}>
                     <Link to="/">Home</Link>
                 </li>
-                <li style={{ margin: '0 10px' }} className="nav-dropdown" 
+                {/* <li style={{ margin: '0 10px' }} className="nav-dropdown" 
                 onMouseEnter={() => setDropdown(true)}
                 onMouseLeave={() => setDropdown(false)}>
                     <span className="nav-dropdown-toggle">Departments <i className="fas fa-caret-down" />
@@ -56,6 +57,10 @@ const Navbar = () => {
                             ))}
                         </ul>
                     )}
+                </li> */}
+
+                <li style={{ margin: '0 10px'}}>
+                    <Link to="/departments">Departments</Link>
                 </li>
 
                 <li style={{ margin: '0 10px' }}>
@@ -70,7 +75,7 @@ const Navbar = () => {
                     </li>
                 ) : (
                     <li style={{ margin: '0 10px' }}>
-                        <Link to="/account">Account</Link>
+                        <Link to="/profile">Profile</Link>
                     </li>
                 )}
                 {!localStorage.getItem("token") ? (
@@ -82,6 +87,10 @@ const Navbar = () => {
                         <Link to="/" onClick={() => clickHandle()}>Logout</Link>
                     </li>
                 )}
+
+                <li style ={{ margin: '0 10px' }}>
+                    <Link to="/admin">Admin</Link>
+                </li>
             </div>
         </div>
     );

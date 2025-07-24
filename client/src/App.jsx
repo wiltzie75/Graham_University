@@ -1,13 +1,14 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import {Routes, Route} from "react-router-dom";
 import './App.css'
-import Admin from '../components/Admin';
-import Navbar from '../components/Navbar';
-import Profile from '../components/Profile';
-import Department from '../components/Department';
-import Faculty from '../components/Faculty';
-import Login from '../components/Login';
-import Register from '../components/Register';
+import Admin from './components/Admin';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import Profile from './components/Profile';
+import Department from './components/Department';
+import Faculty from './components/Faculty';
+import Login from './components/Login';
+import Register from './components/Register';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
     </>
