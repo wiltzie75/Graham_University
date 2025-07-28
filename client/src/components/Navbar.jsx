@@ -66,9 +66,8 @@ const Navbar = () => {
                 <li style={{ margin: '0 10px' }}>
                     <Link to="/faculty">Faculty</Link>
                 </li>
-            </ul>
 
-            <div className="navbar-rigth">
+                <div className="navbar-right">
                 {!localStorage.getItem("token") ? (
                     <li style={{ margin: '0 10px' }}>
                         <Link to="/register">Register</Link>
@@ -92,6 +91,9 @@ const Navbar = () => {
                     <Link to="/admin">Admin</Link>
                 </li>
             </div>
+            </ul>
+
+            
         </div>
     );
 }
